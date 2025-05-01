@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://c437tyalyuyi3"]
+[gd_scene load_steps=9 format=4 uid="uid://c437tyalyuyi3"]
 
 [ext_resource type="PackedScene" uid="uid://dru3xat3ap6ij" path="res://scenes/grid/grid_manager.tscn" id="1_syu62"]
 [ext_resource type="Texture2D" uid="uid://5oim7sxaomtx" path="res://assets/placeholders/world_tileset.png" id="2_vrcdl"]
 [ext_resource type="PackedScene" uid="uid://cjex3olfba5ai" path="res://scenes/ui/tile_highlighter.tscn" id="3_vrcdl"]
 [ext_resource type="PackedScene" uid="uid://c2rjf1vud2ftg" path="res://scenes/occupants/character_manager.tscn" id="4_ce0af"]
 [ext_resource type="PackedScene" uid="uid://dlpj00u235sbg" path="res://scenes/occupants/friendly/basic_friendly.tscn" id="5_anw1g"]
+[ext_resource type="PackedScene" uid="uid://qu1berqion10" path="res://scenes/input/player_input_handler.tscn" id="6_jr7pl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syu62"]
 texture = ExtResource("2_vrcdl")
@@ -159,5 +160,9 @@ grid_manager = NodePath("../GridManager")
 
 [node name="BasicFriendly" parent="." instance=ExtResource("5_anw1g")]
 position = Vector2(-53, -9)
+
+[node name="PlayerInputHandler" parent="." node_paths=PackedStringArray("characterManager", "gridManager") instance=ExtResource("6_jr7pl")]
+characterManager = NodePath("../CharacterManager")
+gridManager = NodePath("../GridManager")
 
 [editable path="GridManager"]

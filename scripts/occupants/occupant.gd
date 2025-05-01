@@ -1,6 +1,6 @@
 class_name Occupant extends Node2D
 
-@export var currentGrid: GridCell;
+@export var currentCell: GridCell;
 var grid: GridManager;
 
 # Called when the node enters the scene tree for the first time.
@@ -10,11 +10,11 @@ func _ready() -> void:
 func registerManager(grid: GridManager) -> void:
 	self.grid = grid
 	global_position = grid.global_to_closest_cell(global_position)
-	currentGrid = grid.cell_from_global(global_position)
-	if (currentGrid == null):
+	currentCell = grid.cell_from_global(global_position)
+	if (currentCell == null):
 		print(str(global_position))
 		print(str(grid.global_to_map(global_position)))
-	currentGrid.occupy(self)
+	currentCell.occupy(self)
 
 enum Occupant_Type {
 	ENEMY,

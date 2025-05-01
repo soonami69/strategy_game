@@ -7,10 +7,10 @@ class_name GridCell extends Node2D
 var x: int;
 var y: int;
 
-static func create(x: int, y: int) -> GridCell:
+static func create(xCoord: int, yCoord: int) -> GridCell:
 	var newCell = GridCell.new()
-	newCell.x = x
-	newCell.y = y
+	newCell.x = xCoord
+	newCell.y = yCoord
 	return newCell
 
 func is_walkable() -> bool:
@@ -19,11 +19,12 @@ func is_walkable() -> bool:
 func occupy(newOccupant: Occupant) -> void:
 	assert(currentOccupant == null, "Cell already has an occupant!");
 	currentOccupant = newOccupant;
-	print(str(self))
+	print(str(self) + " has been successfully occupied.")
 	
 func unoccupy() -> void:
 	assert(currentOccupant != null, "Cell has no occupant to release!");
 	currentOccupant = null;
+	print(str(self) + " has been successfully unoccupied.")
 	
 func get_occupant() -> Occupant:
 	return currentOccupant;
@@ -31,3 +32,7 @@ func get_occupant() -> Occupant:
 # Override
 func _to_string() -> String:
 	return "Cell: (" + str(x) + ", " + str(y) + ")"
+
+# function to check if two grid cells are equal
+func equals(other: GridCell) -> bool:
+	return other.x == self.x and other.y == self.y

@@ -1,4 +1,4 @@
-class_name Character_Manager extends Node2D
+class_name CharacterManager extends Node2D
 
 @export var grid_manager: GridManager;
 @export var friendly_characters: Array[Friendly] = [];

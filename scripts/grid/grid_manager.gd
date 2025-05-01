@@ -58,6 +58,9 @@ func map_to_index(coords: Vector2i) -> Vector2i:
 func index_to_map(coords: Vector2i) -> Vector2i:
 	return coords + offset
 
+func global_from_cell(cell: GridCell) -> Vector2i:
+	return map.to_global(map.map_to_local(index_to_map(Vector2i(cell.x, cell.y))))
+
 func cell_from_index(x: int, y: int) -> GridCell:
 	if x < 0 || y < 0 || x >= width || y >= height:
 		return null

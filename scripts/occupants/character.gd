@@ -15,10 +15,17 @@ func _process(delta: float) -> void:
 func is_walkable():
 	return false;
 
-func move(newGrid: GridCell) -> bool:
-	if not newGrid.is_walkable():
+func move(newCell: GridCell) -> bool:
+	print("Move Called!")
+	if not newCell.is_walkable():
 		return false
-	currentGrid.unoccupy()
-	newGrid.occupy(self)
-	currentGrid = newGrid
+	currentCell.unoccupy()
+	newCell.occupy(self)
+	currentCell = newCell
+	var newLoc = grid.global_from_cell(newCell)
+	animate_move(newLoc)
 	return true
+
+func animate_move(target: Vector2i) -> void:
+	# placeholder, change later
+	global_position = target
