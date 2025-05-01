@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bekgx7syfo36j"]
+
+[ext_resource type="Script" uid="uid://cpdnekm2w1mqn" path="res://scripts/occupants/friendly.gd" id="1_cf536"]
+
+[node name="Friendly" type="Node2D"]
+script = ExtResource("1_cf536")
+metadata/_custom_type_script = "uid://dtl7cecd8b21i"

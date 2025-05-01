@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlpj00u235sbg"]
+
+[ext_resource type="Script" uid="uid://ck7uyu0kkbpw1" path="res://scripts/occupants/friendly/basic_friendly.gd" id="1_spp5t"]
+[ext_resource type="Texture2D" uid="uid://du5gvlpacj3c5" path="res://assets/placeholders/friendly.png" id="2_mvsgn"]
+
+[node name="BasicFriendly" type="Node2D"]
+script = ExtResource("1_spp5t")
+metadata/_custom_type_script = "uid://cpdnekm2w1mqn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mvsgn")

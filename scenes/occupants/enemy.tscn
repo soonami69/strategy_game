@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgebeh5yla5g0"]
+
+[ext_resource type="Script" uid="uid://i4kt25giuv1k" path="res://scripts/occupants/enemy.gd" id="1_kmo7b"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_kmo7b")
+metadata/_custom_type_script = "uid://dtl7cecd8b21i"
