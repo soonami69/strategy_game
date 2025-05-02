@@ -1,4 +1,4 @@
-class_name Enemy extends Character
+class_name BasicEnemy extends Enemy
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,9 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func is_walkable() -> bool:
-	return false;
-	
-func get_type() -> Occupant_Type:
-	return Occupant_Type.ENEMY;

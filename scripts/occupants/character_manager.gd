@@ -4,26 +4,30 @@ class_name CharacterManager extends Node2D
 @export var friendly_characters: Array[Friendly] = [];
 @export var enemy_characters: Array[Character] = [];
 
+var friendly_astar: AStarGrid2D = AStarGrid2D.new()
+var enemy_astar:AStarGrid2D = AStarGrid2D.new() 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(grid_manager != null, "Please add a grid manager to the character manager!")
 	var nodes = get_tree().get_root().get_children()
 	for node in nodes:
-		find_characters_recursive(node)
+		find_occupants_recursive(node)
 
-func find_characters_recursive(node: Node):
-	if node is Character:
-		register_character(node)
+func find_occupants_recursive(node: Node):
+	if node is Occupant:
+		register_occupant(node)
 	for child in node.get_children():
-		find_characters_recursive(child)
+		find_occupants_recursive(child)
 
 
-func register_character(character: Character):
+func register_occupant(character: Occupant):
 	if character is Friendly:
 		friendly_characters.append(character)
 	elif character is Enemy:
 		enemy_characters.append(character)
 	character.registerManager(grid_manager)
+	character.init_pathfinding()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

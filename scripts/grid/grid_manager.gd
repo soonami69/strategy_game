@@ -7,13 +7,19 @@ var height: int;
 var offset: Vector2i;
 var cells: Array[Array] = [];
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(map != null, "Map not instantiated in GridManager!")
 	offset = map.get_used_rect().position
 	width = map.get_used_rect().size.x
 	height = map.get_used_rect().size.y
-	populate() # Replace with function body.
+
+	# Set up pathfinding
+	Pathfinder.initialize(width, height, Vector2i(1, 1))
+	
+	# populate grid with cell info
+	populate()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,7 +33,9 @@ func populate() -> void:
 		cells.append([]);
 		for y in range(height):
 			var tile_id = map.get_cell_source_id(Vector2i(x, y));
-			cells[x].append(convert_id_to_cell(x, y, tile_id))
+			var cell: GridCell = convert_id_to_cell(x, y, tile_id)
+			cells[x].append(cell)
+			Pathfinder.set_cell(cell)
 	print("Population successful!");
 	print("Size of x: " + str(cells.size()) + " size of y: " + str(cells[0].size()))
 
@@ -60,6 +68,9 @@ func index_to_map(coords: Vector2i) -> Vector2i:
 
 func global_from_cell(cell: GridCell) -> Vector2i:
 	return map.to_global(map.map_to_local(index_to_map(Vector2i(cell.x, cell.y))))
+
+func global_from_map(coords: Vector2i) -> Vector2i:
+	return map.to_global(map.map_to_local(index_to_map(coords)))
 
 func cell_from_index(x: int, y: int) -> GridCell:
 	if x < 0 || y < 0 || x >= width || y >= height:

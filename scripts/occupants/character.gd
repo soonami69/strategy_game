@@ -2,6 +2,7 @@ class_name Character extends Occupant
 # class that represents a character that can move.
 
 var movement_range: int = 5
+var pathfinder: AStarGrid2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +14,16 @@ func _process(delta: float) -> void:
 	pass
 	
 func is_walkable():
-	return false;
+	return true;
+
+func is_walkable_by_friendly():
+	return true
+
+func is_walkable_by_enemy():
+	return true
+
+func init_pathfinding():
+	Pathfinder.set_obstacle(currentCell.coords)
 
 func move(newCell: GridCell) -> bool:
 	print("Move Called!")
@@ -26,6 +36,6 @@ func move(newCell: GridCell) -> bool:
 	animate_move(newLoc)
 	return true
 
-func animate_move(target: Vector2i) -> void:
+func animate_move(path: Array[Vector2i]) -> void:
 	# placeholder, change later
-	global_position = target
+	pass

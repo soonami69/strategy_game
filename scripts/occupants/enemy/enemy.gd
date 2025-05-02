@@ -1,4 +1,4 @@
-class_name Friendly extends Character
+class_name Enemy extends Character
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,7 +11,16 @@ func _process(delta: float) -> void:
 	pass
 
 func is_walkable() -> bool:
+	return false;
+	
+func get_type() -> Occupant_Type:
+	return Occupant_Type.ENEMY;
+
+func is_walkable_by_friendly():
 	return false
 
-func get_type() -> Occupant_Type:
-	return Occupant_Type.FRIENDLY
+func is_walkable_by_enemy():
+	return true
+
+func init_pathfinding():
+	Pathfinder.set_enemy(currentCell.coords)

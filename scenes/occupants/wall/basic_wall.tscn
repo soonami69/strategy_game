@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn4xcssmhuib7"]
+
+[ext_resource type="Script" uid="uid://dam7gt1wtvxr4" path="res://scripts/occupants/wall/basic_wall.gd" id="1_xi6hu"]
+[ext_resource type="Texture2D" uid="uid://ww7yyn26a75y" path="res://assets/placeholders/wall_placeholder.png" id="2_rdh3h"]
+
+[node name="BasicWall" type="Node2D"]
+script = ExtResource("1_xi6hu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rdh3h")

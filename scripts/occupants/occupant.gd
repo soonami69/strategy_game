@@ -7,8 +7,8 @@ var grid: GridManager;
 func _ready() -> void:
 	pass
 	
-func registerManager(grid: GridManager) -> void:
-	self.grid = grid
+func registerManager(gridManager: GridManager) -> void:
+	self.grid = gridManager
 	global_position = grid.global_to_closest_cell(global_position)
 	currentCell = grid.cell_from_global(global_position)
 	if (currentCell == null):
@@ -30,6 +30,15 @@ func _process(delta: float) -> void:
 
 func is_walkable() -> bool:
 	return false;
+
+func is_walkable_by_friendly():
+	return false
+
+func is_walkable_by_enemy():
+	return false
+
+func init_pathfinding():
+	Pathfinder.set_obstacle(currentCell.coords)
 
 # Returns the type of Occupant the object is. Useful for quick checks I suppose.
 func get_type() -> Occupant_Type:
