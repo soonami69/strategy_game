@@ -7,7 +7,7 @@ var grid: GridManager;
 func _ready() -> void:
 	pass
 	
-func registerManager(gridManager: GridManager) -> void:
+func register_manager(gridManager: GridManager) -> void:
 	self.grid = gridManager
 	global_position = grid.global_to_closest_cell(global_position)
 	currentCell = grid.cell_from_global(global_position)

@@ -163,12 +163,12 @@ grid_manager = NodePath("../GridManager")
 [node name="BasicFriendly" parent="." instance=ExtResource("5_anw1g")]
 position = Vector2(-53, -9)
 
+[node name="BasicFriendly2" parent="." instance=ExtResource("5_anw1g")]
+position = Vector2(72, -8)
+
 [node name="PlayerInputHandler" parent="." node_paths=PackedStringArray("characterManager", "gridManager") instance=ExtResource("6_jr7pl")]
 characterManager = NodePath("../CharacterManager")
 gridManager = NodePath("../GridManager")
-
-[node name="BasicWall" parent="." instance=ExtResource("7_18ckx")]
-position = Vector2(-8, -7)
 
 [node name="BasicWall2" parent="." instance=ExtResource("7_18ckx")]
 position = Vector2(-7, 10)

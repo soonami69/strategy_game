@@ -30,7 +30,7 @@ func init_pathfinding():
 func move(newCell: GridCell) -> bool:
 	print("Move Called!")
 	var path: Array[Vector2i] = Pathfinder.find_path_friendly(currentCell.coords, newCell.coords)
-	if path.size() == 0 or path.size() - 1    > movement_range:
+	if path.size() == 0 or path.size() - 1 > movement_range:
 		print("Cell outside movement range!")
 		return false
 	if newCell.get_occupant() != null:
@@ -41,8 +41,23 @@ func move(newCell: GridCell) -> bool:
 	self.currentCell = newCell
 	animate_move(path) 
 	return true
+	
+func move_along_path(path: Array[Vector2i]) -> bool:
+	if path.size() == 0 or path.size() - 1 > movement_range:
+		print("Cell outside movement range!")
+		return false
+	var end: GridCell = grid.get_cell(path[-1])
+	if end.get_occupant() != null:
+		return false
+	currentCell.unoccupy()
+	end.occupy(self)
+	self.currentCell = end
+	animate_move(path)
+	return true
 
 func animate_move(path: Array[Vector2i]) -> void:
+	print("animating move!")
+	print("path: " + str(path))
 	for i in range(1, path.size()): # skip the first cell
 		var cell = path[i];
 		await get_tree().create_timer(0.1).timeout

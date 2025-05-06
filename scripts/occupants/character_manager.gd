@@ -26,7 +26,9 @@ func register_occupant(character: Occupant):
 		friendly_characters.append(character)
 	elif character is Enemy:
 		enemy_characters.append(character)
-	character.registerManager(grid_manager)
+	character.register_manager(grid_manager)
+	if character is Character:
+		character.register_character_manager(self)
 	character.init_pathfinding()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

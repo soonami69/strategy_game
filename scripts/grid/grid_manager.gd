@@ -50,6 +50,9 @@ func get_occupant_from_cell(x: int, y: int) -> Occupant:
 func is_walkable(x: int, y: int) -> bool:
 	return cells[x][y].is_walkable();
 
+func get_cell(coords: Vector2i) -> GridCell:
+	return cells[coords.x][coords.y]
+
 func global_to_map(coords: Vector2i) -> Vector2i:
 	return map.local_to_map(map.to_local(coords))
 
@@ -65,6 +68,9 @@ func map_to_index(coords: Vector2i) -> Vector2i:
 
 func index_to_map(coords: Vector2i) -> Vector2i:
 	return coords + offset
+
+func global_from_index(coords: Vector2i) -> Vector2i:
+	return map.to_global(map.map_to_local(index_to_map(coords)))
 
 func global_from_cell(cell: GridCell) -> Vector2i:
 	return map.to_global(map.map_to_local(index_to_map(Vector2i(cell.x, cell.y))))
